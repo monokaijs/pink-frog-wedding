@@ -1,0 +1,78 @@
+.musicPlayer {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-top: -24px;
+
+  .track {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .timer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+
+    .slider {
+      -webkit-appearance: none;
+      flex: 1;
+      height: 4px;
+      display: block;
+      background: #FFCCD2;
+      border-radius: 16px;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+
+    .slider:hover {
+      opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid #362222;
+      background: #B3541E;
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #B3541E;
+      cursor: pointer;
+    }
+  }
+  .controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    a {
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #362222;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .bigBtn {
+      font-size: 24px;
+    }
+  }
+}
