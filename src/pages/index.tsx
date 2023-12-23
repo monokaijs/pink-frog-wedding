@@ -5,6 +5,7 @@ import styles from "@app/styles/Home.module.scss";
 import MusicPlayer from "@app/components/MusicPlayer";
 import MainSection from "@app/components/sections/MainSection";
 import WeddingMain02 from "@app/assets/figures/wedding-main-02.png";
+import StorySection from "@app/components/sections/StorySection";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <Sider/>
       <div className={styles.content}>
         <MainSection/>
+        <StorySection/>
       </div>
       <div className={styles.figure}>
         <img

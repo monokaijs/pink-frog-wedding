@@ -6,6 +6,7 @@
   .content {
     width: 50%;
     overflow-y: auto;
+    z-index: 2;
 
     &::-webkit-scrollbar {
       display: none;
