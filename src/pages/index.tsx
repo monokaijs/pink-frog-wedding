@@ -6,6 +6,7 @@ import MusicPlayer from "@app/components/MusicPlayer";
 import MainSection from "@app/components/sections/MainSection";
 import WeddingMain02 from "@app/assets/figures/wedding-main-02.png";
 import StorySection from "@app/components/sections/StorySection";
+import CalendarSection from "@app/components/sections/CalendarSection";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <div className={styles.content}>
         <MainSection/>
         <StorySection/>
+        <CalendarSection/>
       </div>
       <div className={styles.figure}>
         <img
