@@ -1,10 +1,14 @@
 .mainSection {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 0 4em;
   position: relative;
+
+  .mobileFigure {
+    display: none;
+  }
 
   .welcomeText {
     display: flex;
@@ -24,7 +28,7 @@
   }
 
   .title {
-    font-size: 2em;
+    font-size: 1.4em;
     margin-bottom: 1em;
   }
 
@@ -40,15 +44,14 @@
     .bride {
     }
     .groom {
+      position: relative;
+      .connector {
+        position: absolute;
+        top: 0;
+        transform: rotate(30deg);
+        font-size: .6em;
+      }
 
-    }
-
-    .connector {
-      position: absolute;
-      left: 24.6em;
-      top: -.4em;
-      transform: rotate(30deg);
-      font-size: .4em;
     }
 
     .ornament {
@@ -123,4 +126,45 @@
   rotate: 30deg;
   opacity: .2;
   z-index: -1;
+}
+
+@media screen and (max-width: 1360px) {
+  .mainSection {
+    padding: 0 2em;
+
+    .mobileFigure {
+      display: block;
+      width: 50%;
+      align-self: center;
+      z-index: 99;
+    }
+
+    .title {
+
+    }
+    .welcomeText {
+      margin-bottom: 1em;
+      .guest {
+        align-self: center;
+      }
+    }
+
+    .names {
+      font-size: 2.4em;
+    }
+
+    .shortStory {
+      align-self: center;
+      width: 80%;
+    }
+    .cta {
+      align-self: center;
+    }
+  }
+  .leaf05 {
+    width: 16em;
+    transform: rotate(-160deg);
+    bottom: 4em;
+    right: -8em;
+  }
 }

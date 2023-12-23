@@ -76,7 +76,7 @@ export default function CalendarSection() {
       </div>
       <div style={{
         width: '100%',
-        height: 500,
+        height: 400,
       }}>
         <Map/>
       </div>

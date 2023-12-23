@@ -1,7 +1,7 @@
 .storySection {
   min-height: 100vh;
   .content {
-    padding: 4em 4em;
+    padding: 4em;
   }
   .title {
     font-size: 4em;
@@ -17,5 +17,17 @@
   }
   .opening {
     margin-bottom: 2em;
+  }
+}
+
+
+@media screen and (max-width: 1360px) {
+  .storySection {
+    .content {
+      padding: 2em;
+    }
+    .title {
+      font-size: 2.4em;
+    }
   }
 }

@@ -26,6 +26,7 @@ export default function Home() {
       </div>
       <div className={styles.figure}>
         <img
+          className={styles.bgFigure}
           src={WeddingMain02.src}
           style={{
             height: '100vh',
