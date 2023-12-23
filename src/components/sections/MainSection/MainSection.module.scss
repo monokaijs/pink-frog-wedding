@@ -6,6 +6,23 @@
   padding: 0 4em;
   position: relative;
 
+  .welcomeText {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 6em;
+    .welcome {
+      font-size: 1.4em;
+    }
+    .guest {
+      margin: 0 -.2em;
+      padding: 0 .2em;
+      align-self: flex-start;
+      font-size: 2em;
+      font-weight: 600;
+      border-bottom: 2px dashed #362222;
+    }
+  }
+
   .title {
     font-size: 2em;
     margin-bottom: 1em;

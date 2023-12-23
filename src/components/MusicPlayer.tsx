@@ -23,6 +23,7 @@ export default function MusicPlayer() {
         setPaused(!!audioRef.current?.paused);
       });
       audioRef.current.addEventListener('play', e => {
+        setInitialized(true);
         setPaused(!!audioRef.current?.paused);
         setDuration(audioRef.current?.duration || 0);
       })
@@ -31,8 +32,8 @@ export default function MusicPlayer() {
 
   useEffect(() => {
     document.body.addEventListener("mouseup", function () {
-      if (audioRef.current && !initialized) {
-        setInitialized(true);
+      if (audioRef.current && !(audioRef.current as any).initialized) {
+        (audioRef.current as any).initialized = true;
         return audioRef.current.play();
       }
     });
@@ -69,7 +70,6 @@ export default function MusicPlayer() {
         <FontAwesomeIcon icon={faRepeat}/>
       </a>
       <a className={styles.bigBtn} onClick={e => {
-        console.log('clicked');
         e.preventDefault();
         if (paused) {
           audioRef.current?.play();

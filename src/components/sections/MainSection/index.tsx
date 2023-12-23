@@ -19,8 +19,18 @@ const alegreyaFont = Alegreya({subsets: ['latin']});
 export default function MainSection() {
   return <div className={styles.mainSection}>
     <Leaves/>
+    <div className={styles.welcomeText} style={{
+      fontFamily: alegreyaFont.style.fontFamily
+    }}>
+      <div className={styles.welcome}>
+        Trân trọng kính mời
+      </div>
+      <div className={styles.guest}>
+        Một Thằng Em Bất Kỳ
+      </div>
+    </div>
     <div className={styles.title} style={{fontFamily: alegreyaFont.style.fontFamily}}>
-      Lễ Thành Hôn
+      Tới dự Lễ Thành Hôn
     </div>
     <div className={styles.names} style={{
       fontFamily: TanMonCheriFont.style.fontFamily
