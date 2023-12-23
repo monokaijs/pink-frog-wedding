@@ -19,7 +19,12 @@ const alegreyaFont = Alegreya({subsets: ['latin']});
 export default function MainSection() {
   return <div className={styles.mainSection}>
     <Leaves/>
-    <img src={MainFigure.src} alt={'main'} className={styles.mobileFigure}/>
+    <div
+      className={styles.mobileFigure}
+      style={{
+        backgroundImage: `url(${MainFigure.src})`
+      }}
+    />
     <div className={styles.welcomeText} style={{
       fontFamily: alegreyaFont.style.fontFamily
     }}>
