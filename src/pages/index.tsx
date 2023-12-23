@@ -7,6 +7,7 @@ import MainSection from "@app/components/sections/MainSection";
 import WeddingMain02 from "@app/assets/figures/wedding-main-02.png";
 import StorySection from "@app/components/sections/StorySection";
 import CalendarSection from "@app/components/sections/CalendarSection";
+import GuestSection from "@app/components/sections/GuestSection";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
         <MainSection/>
         <StorySection/>
         <CalendarSection/>
+        <GuestSection/>
       </div>
       <div className={styles.figure}>
         <img
