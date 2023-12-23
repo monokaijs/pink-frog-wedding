@@ -22,8 +22,8 @@ export default function Home() {
       <Sider/>
       <div className={styles.content}>
         <MainSection/>
-        <StorySection/>
         <CalendarSection/>
+        <StorySection/>
         <GuestSection/>
       </div>
       <div className={styles.figure}>

@@ -36,7 +36,7 @@ export default function MainSection() {
       </div>
     </div>
     <div className={styles.title} style={{fontFamily: alegreyaFont.style.fontFamily}}>
-      Tới dự Lễ Thành Hôn
+      Tới dự tiệc mừng lễ thành hôn cùng gia đình chúng tôi
     </div>
     <div className={styles.names} style={{
       fontFamily: TanMonCheriFont.style.fontFamily
