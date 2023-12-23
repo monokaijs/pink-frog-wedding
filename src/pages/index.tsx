@@ -1,8 +1,9 @@
 import MainFigure from "@app/assets/figures/wedding-main-01.png";
 import WaterBackground from "@app/assets/background/water-color-01.png";
 import Sider from "@app/components/Sider";
-import styles from "@app/styles/Home.module.css";
+import styles from "@app/styles/Home.module.scss";
 import MusicPlayer from "@app/components/MusicPlayer";
+import MainSection from "@app/components/sections/MainSection";
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
     }} className={styles.home}>
       <Sider/>
       <div className={styles.content}>
-        Content goes here
+        <MainSection/>
       </div>
       <div className={styles.figure}>
         <img

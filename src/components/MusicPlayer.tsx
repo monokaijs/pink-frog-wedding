@@ -1,9 +1,14 @@
 import styles from "./MusicPlayer.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLink, faPlay, faRepeat} from "@fortawesome/free-solid-svg-icons";
+import {Alegreya} from "next/font/google";
+
+const alegreyaFont = Alegreya({subsets: ['latin']});
 
 export default function MusicPlayer() {
-  return <div className={styles.musicPlayer}>
+  return <div className={styles.musicPlayer} style={{
+    fontFamily: alegreyaFont.style.fontFamily
+  }}>
     <div className={styles.track}>
       TẶNG NHAU - Pink Frog
     </div>

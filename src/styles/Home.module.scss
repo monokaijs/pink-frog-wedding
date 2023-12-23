@@ -4,6 +4,11 @@
 
   .content {
     width: 50%;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .figure {

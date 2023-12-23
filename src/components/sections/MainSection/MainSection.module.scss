@@ -1,0 +1,109 @@
+.mainSection {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 4em;
+  position: relative;
+
+  .title {
+    font-size: 2em;
+    margin-bottom: 1em;
+  }
+
+  .names {
+    text-transform: uppercase;
+    font-size: 4em;
+    color: #362222;
+    position: relative;
+    margin-bottom: .5em;
+    display: flex;
+    flex-direction: column;
+
+    .bride {
+    }
+    .groom {
+
+    }
+
+    .connector {
+      position: absolute;
+      left: 24.6em;
+      top: -.4em;
+      transform: rotate(30deg);
+      font-size: .4em;
+    }
+
+    .ornament {
+      position: absolute;
+      bottom: -.4em;
+      height: .6em;
+      left: 0;
+    }
+  }
+
+  .shortStory {
+    width: 60%;
+    margin-bottom: 4em;
+  }
+
+  .cta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .button {
+      cursor: pointer;
+      padding: .4em .4em;
+      border-radius: 99px;
+      align-self: flex-start;
+      align-items: center;
+      display: flex;
+      gap: .4em;
+      flex-direction: row;
+      background-color: #362222;
+      color: white;
+
+      .text {
+        padding-left: .8em;
+      }
+
+      .date {
+        background-color: white;
+        color: #362222;
+        padding: .2em .6em;
+        border-radius: 99px;
+      }
+    }
+  }
+
+}
+
+.leaf04 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24em;
+  transform: rotate(-120deg);
+  opacity: .2;
+}
+
+.leaf05 {
+  position: absolute;
+  right: -6em;
+  bottom: -2em;
+  width: 24em;
+  transform: rotate(-120deg);
+  opacity: .4;
+}
+
+
+
+.flower {
+  position: absolute;
+  left: 0;
+  bottom: -3em;
+  width: 14em;
+  rotate: 30deg;
+  opacity: .2;
+  z-index: -1;
+}
