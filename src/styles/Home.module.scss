@@ -1,6 +1,7 @@
 .home {
   display: flex;
   flex-direction: row;
+  overflow: hidden;
 
   .content {
     width: 50%;
@@ -12,6 +13,7 @@
   }
 
   .figure {
+    position: relative;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -19,7 +21,8 @@
     justify-content: center;
 
     .mainFigure {
-      width: 600px;
+      width: 60%;
+      z-index: 1;
     }
   }
 }

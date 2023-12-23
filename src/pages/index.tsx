@@ -4,6 +4,7 @@ import Sider from "@app/components/Sider";
 import styles from "@app/styles/Home.module.scss";
 import MusicPlayer from "@app/components/MusicPlayer";
 import MainSection from "@app/components/sections/MainSection";
+import WeddingMain02 from "@app/assets/figures/wedding-main-02.png";
 
 export default function Home() {
   return (
@@ -20,6 +21,16 @@ export default function Home() {
         <MainSection/>
       </div>
       <div className={styles.figure}>
+        <img
+          src={WeddingMain02.src}
+          style={{
+            height: '100vh',
+            position: 'absolute',
+            left: -200, right: 0, top: 0, bottom: 0,
+            zIndex: 0,
+            opacity: .24
+          }}
+        />
         <img
           src={MainFigure.src}
           className={styles.mainFigure}
