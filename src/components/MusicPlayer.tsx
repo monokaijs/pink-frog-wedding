@@ -45,13 +45,29 @@ export default function MusicPlayer() {
     <audio
       autoPlay={true}
       ref={audioRef}
-      onLoadStart={e => {
-        console.log(e.target);
-      }}
       src={'/assets/music/TangNhau.mp3'}
+    />
+    <div className={styles.mobileProgress}>
+      <div
+        className={styles.progress}
+        style={{
+          width: `${duration > 0 ? currentTime / duration * 100 : 0}%`
+        }}
+      />
+    </div>
+    <div
+      className={styles.mobileArtwork}
+      style={{
+        backgroundImage: `url('https://img.youtube.com/vi/XTsmH9b2ADY/0.jpg')`
+      }}
     />
     <div className={styles.track}>
       TẶNG NHAU - Pink Frog
+      <div className={styles.mobileTimer}>
+        {!audioRef.current?.currentTime ? '--:--' : formatMusicTime(currentTime!)}
+        {' / '}
+        {duration <= 0 ? '--:--' : formatMusicTime(duration)}
+      </div>
     </div>
     <div className={styles.timer}>
       <div className={styles.currentTime}>
@@ -63,6 +79,23 @@ export default function MusicPlayer() {
       />
       <div className={styles.duration}>
         {duration <= 0 ? '--:--' : formatMusicTime(duration)}
+      </div>
+    </div>
+    <div className={styles.mobileControls}>
+      <div className={styles.control}>
+        <a href={'https://www.youtube.com/watch?v=XTsmH9b2ADY'} target={'_blank'}>
+          <FontAwesomeIcon icon={faLink}/>
+        </a>
+      </div>
+      <div className={styles.control}>
+        <a onClick={e => {
+          e.preventDefault();
+          if (paused) {
+            audioRef.current?.play();
+          } else audioRef.current?.pause();
+        }}>
+          <FontAwesomeIcon icon={paused ? faPlay : faPause}/>
+        </a>
       </div>
     </div>
     <div className={styles.controls}>
