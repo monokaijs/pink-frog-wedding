@@ -3,4 +3,31 @@
   background-color: #362222;
   height: 100%;
   z-index: 9;
+  display: flex;
+  flex-direction: column;
+
+  color: white;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4em;
+
+  .item {
+    width: 100%;
+    text-align: center;
+    font-size: 1.4em;
+    height: 40px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+      color: #FFCCD2;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1360px) {
+  .sider {
+    display: none;
+  }
 }
