@@ -45,7 +45,7 @@ export default function GuestPage({guestName, code}: any) {
           <MainSection/>
           <CalendarSection/>
           <StorySection/>
-          <GuestSection invitation={invitation}/>
+          <GuestSection/>
         </div>
         <div className={styles.figure}>
           <img

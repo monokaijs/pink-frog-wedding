@@ -37,10 +37,10 @@ export default function Home() {
     }} className={styles.home}>
       <Sider/>
       <div className={styles.content}>
-        <MainSection invitation={invitation}/>
+        <MainSection/>
         <CalendarSection/>
         <StorySection/>
-        <GuestSection invitation={invitation}/>
+        <GuestSection/>
       </div>
       <div className={styles.figure}>
         <img

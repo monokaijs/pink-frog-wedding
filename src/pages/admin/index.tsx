@@ -138,9 +138,14 @@ export default function AdminPage() {
       </Button>
     </div>
     <Table dataSource={invitations} columns={columns}/>
-    <InvitationModal setIsOpenResultModal={setIsOpenResultModal} setInvitation={setInvitation} invitation={invitation}
-                     onCancel={handleCancelInvitationModal} isOpen={isOpenInvitationModal}
-                     onLoad={handleLoadInvitations}/>
+    <InvitationModal
+      setIsOpenResultModal={setIsOpenResultModal}
+      setInvitation={setInvitation}
+      invitation={invitation}
+      onCancel={handleCancelInvitationModal}
+      isOpen={isOpenInvitationModal}
+      onLoad={handleLoadInvitations}
+    />
     <ResultModal isOpen={isOpenResultModal} onCancel={handleCancelResultModal} invitation={invitation}/>
   </AdminLayout>
 }
