@@ -13,12 +13,12 @@ const useApiRequest = (fn: Callback) => {
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<any>(null);
   const [status, setStatus] = useState<Status>(Status.IDLE);
-  const caller = async (args: any): Promise<any> => {
+  const caller = async (...args: any[]): Promise<any> => {
     setData(null);
     setError(null);
     setStatus(Status.PENDING);
     try {
-      const response = await fn(args);
+      const response = await fn(...args);
       setData(() => response);
       setStatus(Status.FULFILLED);
       return response;

@@ -63,7 +63,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   } else if (req.method === "DELETE") {
     try {
       const response = await invitationService.remove({
-        _id: req.query?.invitationId,
+        code: req.query?.code,
       });
       return res.status(200).json({
         success: true,

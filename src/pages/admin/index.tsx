@@ -1,24 +1,25 @@
 import AdminLayout from "@app/components/layouts/AdminLayout";
-import {Button, Card, Dropdown, Table, Typography} from "antd";
+import {Button, Card, Dropdown, message, Modal, Table, Typography} from "antd";
 import {useEffect, useState} from "react";
 import {InvitationDto, Relationship} from "@app/types/invitation.type";
 import {apiService} from "@app/services/api.service";
 import {ColumnsType} from "antd/es/table";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEllipsis, faEye, faPlus} from "@fortawesome/free-solid-svg-icons";
+import {faEllipsis, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {InvitationModal} from "@app/components/admin/InvitationModal";
 import {ResultModal} from "@app/components/admin/ResultModal";
+import {faEye, faPenToSquare} from "@fortawesome/free-regular-svg-icons";
+import useRequest from "@app/hooks/useRequest";
 
 export default function AdminPage() {
   const [invitation, setInvitation] = useState<InvitationDto | null>(null);
   const [invitations, setInvitations] = useState<InvitationDto[]>([]);
   const [isOpenInvitationModal, setIsOpenInvitationModal] = useState<boolean>(false);
   const [isOpenResultModal, setIsOpenResultModal] = useState<boolean>(false);
+  const [{status: removeStatus}, doRemoveInvitation] = useRequest(apiService.removeInvitation);
   useEffect(() => {
     handleLoadInvitations()
   }, []);
-
-  console.log({invitations})
 
   const columns: ColumnsType<InvitationDto> = [
     {
@@ -65,7 +66,7 @@ export default function AdminPage() {
       key: 'willJoin',
       render: (willJoin) => {
         return <Typography.Text>
-          {willJoin ? 'Sẽ tham gia' : 'Chưa có thông tin'}
+          {typeof willJoin === "undefined" ? "Chưa có thông tin" : (willJoin ? 'Sẽ tham gia' : 'Không tham gia')}
         </Typography.Text>
       }
     },
@@ -77,11 +78,48 @@ export default function AdminPage() {
             {
               label: 'Xem thông tin',
               key: 'view',
+              icon: <FontAwesomeIcon icon={faEye} />,
               onClick: () => {
                 setInvitation(records);
                 setIsOpenResultModal(true);
               }
             },
+            {
+              label: 'Cập nhật',
+              key: 'update',
+              icon: <FontAwesomeIcon icon={faPenToSquare} />,
+              onClick: () => {
+                setInvitation(records);
+                setIsOpenInvitationModal(true);
+              }
+            },
+            {
+              type: 'divider'
+            },
+            {
+              danger: true,
+              label: 'Xóa',
+              key: 'remove',
+              icon: <FontAwesomeIcon icon={faTrash} />,
+              onClick: async () => {
+                Modal.confirm({
+                  title: `Bạn chắc chắn muốn xóa thư mời này chứ?`,
+                  centered: true,
+                  okText: 'Xóa',
+                  cancelText: 'Hủy',
+
+                  onOk: async () => {
+                    try {
+                      await doRemoveInvitation(records?.code);
+                      handleLoadInvitations();
+                      message.success('Xóa thư mời thành công!');
+                    } catch (error) {
+                      message.success('Xóa thư mời thất bại!');
+                    }
+                  }
+                });
+              }
+            }
           ] }}>
           <Button shape={'circle'} type={'text'}>
             <FontAwesomeIcon icon={faEllipsis}/>
@@ -122,7 +160,7 @@ export default function AdminPage() {
         Create
       </Button>
     </div>
-    <Table dataSource={invitations} columns={columns}/>
+    <Table pagination={{pageSize: 8}} dataSource={invitations} columns={columns}/>
     <InvitationModal setIsOpenResultModal={setIsOpenResultModal} setInvitation={setInvitation} invitation={invitation} onCancel={handleCancelInvitationModal} isOpen={isOpenInvitationModal}
                      onLoad={handleLoadInvitations}/>
     <ResultModal isOpen={isOpenResultModal} onCancel={handleCancelResultModal} invitation={invitation}/>
