@@ -45,6 +45,10 @@ class ApiService {
   updateInvitation(code: string, payload: Partial<InvitationDto>) {
     return request(`/invitation/${code}`, ApiMethod.PATCH, payload);
   }
+
+  deleteInvitation(code: string) {
+    return request(`/invitation/${code}`, ApiMethod.DELETE);
+  }
 }
 
 export const apiService = new ApiService();

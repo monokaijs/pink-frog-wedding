@@ -1,5 +1,5 @@
 import AdminLayout from "@app/components/layouts/AdminLayout";
-import {Button, Card, Dropdown, Table, Typography} from "antd";
+import {Button, Card, Dropdown, notification, Table, Typography} from "antd";
 import {useEffect, useState} from "react";
 import {InvitationDto, Relationship} from "@app/types/invitation.type";
 import {apiService} from "@app/services/api.service";
@@ -17,8 +17,6 @@ export default function AdminPage() {
   useEffect(() => {
     handleLoadInvitations()
   }, []);
-
-  console.log({invitations})
 
   const columns: ColumnsType<InvitationDto> = [
     {
@@ -73,16 +71,33 @@ export default function AdminPage() {
       title: 'Actions',
       key: 'actions',
       render: (_, records) => {
-        return <Dropdown menu={{ items: [
-            {
-              label: 'Xem thông tin',
-              key: 'view',
-              onClick: () => {
-                setInvitation(records);
-                setIsOpenResultModal(true);
-              }
-            },
-          ] }}>
+        return <Dropdown menu={{
+          items: [{
+            label: 'Xem thông tin',
+            key: 'view',
+            onClick: () => {
+              setInvitation(records);
+              setIsOpenResultModal(true);
+            }
+          }, {
+            label: 'Xóa',
+            key: 'delete',
+            danger: true,
+            onClick: () => {
+              // delete record
+              console.log(records)
+              apiService.deleteInvitation(records.code).then(() => {
+                notification.success({
+                  message: 'Deleted',
+                  description: 'Deleted invitation successfully',
+                });
+                setInvitations(ivs => {
+                  return ivs.filter(i => i._id !== records._id);
+                })
+              });
+            }
+          }]
+        }}>
           <Button shape={'circle'} type={'text'}>
             <FontAwesomeIcon icon={faEllipsis}/>
           </Button>
@@ -123,7 +138,8 @@ export default function AdminPage() {
       </Button>
     </div>
     <Table dataSource={invitations} columns={columns}/>
-    <InvitationModal setIsOpenResultModal={setIsOpenResultModal} setInvitation={setInvitation} invitation={invitation} onCancel={handleCancelInvitationModal} isOpen={isOpenInvitationModal}
+    <InvitationModal setIsOpenResultModal={setIsOpenResultModal} setInvitation={setInvitation} invitation={invitation}
+                     onCancel={handleCancelInvitationModal} isOpen={isOpenInvitationModal}
                      onLoad={handleLoadInvitations}/>
     <ResultModal isOpen={isOpenResultModal} onCancel={handleCancelResultModal} invitation={invitation}/>
   </AdminLayout>

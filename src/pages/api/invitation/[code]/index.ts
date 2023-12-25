@@ -36,7 +36,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       })
 
     } catch (error) {
-      console.log({error})
       return res.status(500).json({
         success: false,
         message: 'Failed to update invitation!',
@@ -63,7 +62,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   } else if (req.method === "DELETE") {
     try {
       const response = await invitationService.remove({
-        _id: req.query?.invitationId,
+        code: req.query?.code,
       });
       return res.status(200).json({
         success: true,
