@@ -20,11 +20,10 @@ const TanMonCheriFont = localFont({
 const alegreyaFont = Alegreya({subsets: ['latin']});
 
 interface MainSectionProps {
-  invitation: InvitationDto | null
 }
 
 export default function MainSection(props: MainSectionProps) {
-  const {guestName} = useContext(GuestContext);
+  const {guestName, code} = useContext(GuestContext);
   return <div className={styles.mainSection}>
     <Leaves/>
     <div

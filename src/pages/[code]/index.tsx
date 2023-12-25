@@ -42,7 +42,7 @@ export default function GuestPage({guestName, code}: any) {
       }} className={styles.home}>
         <Sider/>
         <div className={styles.content}>
-          <MainSection invitation={invitation}/>
+          <MainSection/>
           <CalendarSection/>
           <StorySection/>
           <GuestSection invitation={invitation}/>

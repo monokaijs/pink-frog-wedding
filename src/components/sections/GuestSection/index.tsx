@@ -1,18 +1,18 @@
 import styles from "./GuestSection.module.scss";
 import {Alegreya} from "next/font/google";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {InvitationDto, Relationship} from "@app/types/invitation.type";
 import {message} from "antd";
 import useRequest from "@app/hooks/useRequest";
 import {apiService} from "@app/services/api.service";
+import {GuestContext} from "@app/pages/[code]";
 
-interface MainSectionProps {
-  invitation: InvitationDto | null
-}
+interface MainSectionProps {}
 
 const alegreyaFont = Alegreya({subsets: ['latin']});
+
 export default function GuestSection(props: MainSectionProps) {
-  const {invitation} = props;
+  const {code} = useContext(GuestContext);
   const [willJoin, setWillJoin] = useState(true);
   const [participants, setParticipants] = useState("1");
 
@@ -30,7 +30,8 @@ export default function GuestSection(props: MainSectionProps) {
       <form onSubmit={async (event: any) => {
         try {
           event.preventDefault();
-          await apiService.updateInvitation(invitation?.code || "", {
+          console.log('code', code);
+          await apiService.updateInvitation(code!, {
             willJoin,
             participants
           })

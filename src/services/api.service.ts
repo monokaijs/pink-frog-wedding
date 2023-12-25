@@ -13,7 +13,7 @@ async function request<Payload>(endpoint: string, method: ApiMethod, payload?: P
   try {
     const response = await axios({
       method,
-      url: `${API_BASE_URL}${endpoint}`,
+      url: `${location.origin}/api/${endpoint}`,
       data: payload,
       ...options
     });
