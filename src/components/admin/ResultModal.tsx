@@ -21,19 +21,21 @@ export const ResultModal = (props: ResultModalProps) => {
     footer={null}
     cancelText={'Cancel'}
   >
-    <Form.Item>
-      <QRCode value={`${typeof window !== 'undefined' ? window?.location?.origin : ''}/${invitation?.code}`}/>
-    </Form.Item>
-    <Form.Item>
-      <Input
-        className={'cursor-pointer'}
-        addonAfter={<FontAwesomeIcon icon={faCopy} onClick={() => {
-          navigator.clipboard.writeText(`${typeof window !== 'undefined' ? window?.location?.origin : ''}/${invitation?.code}`).then(() => {
-            message.success('Sao chép thành công!')
-          })
-        }}/>}
-        value={`${typeof window !== 'undefined' ? window?.location?.origin : ''}/${invitation?.code}`}
-      />
-    </Form.Item>
+    <Form layout={'vertical'}>
+      <Form.Item label={'Quét QR code để đến trang thư mời:'}>
+        <QRCode value={`${typeof window !== 'undefined' ? window?.location?.origin : ''}/${invitation?.code}`}/>
+      </Form.Item>
+      <Form.Item label={'Đường dẫn thư mời:'}>
+        <Input
+          className={'cursor-pointer'}
+          addonAfter={<FontAwesomeIcon icon={faCopy} onClick={() => {
+            navigator.clipboard.writeText(`${typeof window !== 'undefined' ? window?.location?.origin : ''}/${invitation?.code}`).then(() => {
+              message.success('Sao chép thành công!')
+            })
+          }}/>}
+          value={`${typeof window !== 'undefined' ? window?.location?.origin : ''}/${invitation?.code}`}
+        />
+      </Form.Item>
+    </Form>
   </Modal>
 }

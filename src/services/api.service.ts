@@ -46,7 +46,7 @@ class ApiService {
     return request(`/invitation/${code}`, ApiMethod.PATCH, payload);
   }
 
-  deleteInvitation(code: string) {
+  removeInvitation(code: string) {
     return request(`/invitation/${code}`, ApiMethod.DELETE);
   }
 }
