@@ -1,10 +1,21 @@
 import styles from "./GuestSection.module.scss";
 import {Alegreya} from "next/font/google";
 import {useState} from "react";
+import {InvitationDto, Relationship} from "@app/types/invitation.type";
+import {message} from "antd";
+import useRequest from "@app/hooks/useRequest";
+import {apiService} from "@app/services/api.service";
+
+interface MainSectionProps {
+  invitation: InvitationDto | null
+}
 
 const alegreyaFont = Alegreya({subsets: ['latin']});
-export default function GuestSection() {
+export default function GuestSection(props: MainSectionProps) {
+  const {invitation} = props;
   const [willJoin, setWillJoin] = useState(true);
+  const [participants, setParticipants] = useState("1");
+
   return <div className={styles.guestSection} style={{
     fontFamily: alegreyaFont.style.fontFamily
   }}>
@@ -16,7 +27,19 @@ export default function GuestSection() {
         Bạn vui lòng điền giúp chúng mình những thông tin dưới đây nhé! Những thông tin này sẽ giúp chúng mình có thể
         đón tiếp bạn tốt hơn cũng như liên lạc với bạn khi cần thiết. Cảm ơn bạn rất nhiều!
       </div>
-      <div className={styles.form}>
+      <form onSubmit={async (event: any) => {
+        try {
+          event.preventDefault();
+          await apiService.updateInvitation(invitation?.code || "", {
+            willJoin,
+            participants
+          })
+          message.success('Lưu thông tin thành công!')
+        } catch (error) {
+          message.error('Có lỗi xảy ra khi lưu thông tin!')
+        }
+      }
+      } className={styles.form}>
         <div className={styles.formItem}>
           <label htmlFor={'willJoin'}>
             Bạn có thể tham dự chứ?
@@ -29,36 +52,32 @@ export default function GuestSection() {
           </div>
         </div>
         <div className={styles.formItem}>
-          <label htmlFor={'phoneNumber'}>
-            Số điện thoại
-          </label>
-          <input className={styles.text} name={'phoneNumber'} placeholder={'0123456789'} style={{
-            fontFamily: alegreyaFont.style.fontFamily
-          }} disabled={!willJoin}/>
-        </div>
-        <div className={styles.formItem}>
           <label htmlFor={'participants'}>
             Số người tham dự
           </label>
           <select name={'participants'} style={{
             fontFamily: alegreyaFont.style.fontFamily
-          }} disabled={!willJoin}>
-            <option value={1}>1 người</option>
-            <option value={2}>2 người</option>
-            <option value={3}>3 người</option>
-            <option value={4}>4 người</option>
-            <option value={5}>5 người</option>
-            <option value={6}>6 người</option>
+          }} disabled={!willJoin} value={participants} onChange={(event) => {
+            setParticipants(event.target.value)
+          }}>
+            <option value={"1"}>1 người</option>
+            <option value={"2"}>2 người</option>
+            <option value={"3"}>3 người</option>
+            <option value={"4"}>4 người</option>
+            <option value={"5"}>5 người</option>
+            <option value={"6"}>6 người</option>
           </select>
         </div>
         <div className={styles.formItem}>
           <button style={{
             fontFamily: alegreyaFont.style.fontFamily
-          }}>
+          }}
+                  type={'submit'}
+          >
             Lưu thông tin
           </button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 }

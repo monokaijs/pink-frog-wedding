@@ -1,6 +1,4 @@
 import mongoose from 'mongoose';
-import {Invitation, InvitationDoc, InvitationDto} from "@app/models/invitation.model";
-import {Document} from "mongoose";
 
 let cached = global.mongoose;
 
@@ -15,10 +13,6 @@ class DbService {
     if (cached.conn) return cached.conn;
     cached.conn = await mongoose.connect(MONGO_URI);
     return cached.conn;
-  }
-
-  getInvitations() {
-    return Invitation.find({});
   }
 }
 
