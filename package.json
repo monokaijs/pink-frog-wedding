@@ -14,15 +14,19 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@react-google-maps/api": "^2.19.2",
     "antd": "^5.12.5",
+    "antd-css-utilities": "^2.0.4",
+    "axios": "^1.6.2",
     "leaflet": "^1.9.4",
     "mongoose": "^8.0.3",
     "next": "14.0.4",
+    "next-connect": "^1.0.0",
     "react": "^18",
     "react-countdown": "^2.3.5",
     "react-dom": "^18",
     "react-leaflet": "^4.2.1",
     "react-vertical-timeline-component": "^3.6.0",
-    "sass": "^1.69.5"
+    "sass": "^1.69.5",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.8",

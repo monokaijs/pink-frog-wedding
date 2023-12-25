@@ -13,7 +13,7 @@ import {useEffect, useState} from "react";
 import {apiService} from "@app/services/api.service";
 import {InvitationDto} from "@app/types/invitation.type";
 
-export default function Home() {
+export default function GuestPage() {
   const {query} = useRouter();
   const [invitation, setInvitation] = useState<InvitationDto | null>(null);
   console.log({code: query?.code})
