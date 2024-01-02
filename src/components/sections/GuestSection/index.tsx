@@ -41,8 +41,7 @@ export default function GuestSection() {
         Thông tin tham gia
       </div>
       <div className={styles.description}>
-        Bạn vui lòng điền giúp chúng mình những thông tin dưới đây nhé! Những thông tin này sẽ giúp chúng mình có thể
-        đón tiếp bạn tốt hơn cũng như liên lạc với bạn khi cần thiết. Cảm ơn bạn rất nhiều!
+        Quý khách mời vui lòng điền những thông tin dưới đây để gia đình chúng tôi có thể chuẩn bị đón tiếp chu đáo. Chân thành cảm ơn!
       </div>
       <form onSubmit={handleSubmit(onSubmitForm)} className={styles.form}>
         <div className={styles.formItem}>
