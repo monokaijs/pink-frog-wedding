@@ -56,7 +56,7 @@ export default function CalendarSection() {
       Lịch Trình & Địa Điểm
       </div>
       <div className={styles.opening}>
-        Hôn lễ sẽ được tổ chức vào ngày <span className={styles.specific}>
+        Hôn lễ sẽ được tổ chức vào <span className={styles.specific}>
           17 giờ, ngày 16 tháng 01 năm 2024.
         </span>
       </div>
@@ -71,7 +71,7 @@ export default function CalendarSection() {
           href={'https://maps.app.goo.gl/rNPuJQP8WbioPG9P6'} className={styles.address}
           target={'_blank'}
         >
-          Cầu Am Palace, số 9 Chu Văn An, Yết Kiêu, Hà Đông, Hà Nội
+        Tầng 2, Cầu Am Palace, số 9 Chu Văn An, Yết Kiêu, Hà Đông, Hà Nội
         </a>.
       </div>
       <div style={{

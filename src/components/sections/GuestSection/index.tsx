@@ -14,7 +14,7 @@ interface GuestFormPayload {
   participants: string,
   guestName: string,
   relationship: Relationship,
-  description: string,
+  description?: string,
 }
 
 const alegreyaFont = Alegreya({subsets: ['latin']});
@@ -25,6 +25,7 @@ export default function GuestSection() {
   const onSubmitForm: SubmitHandler<GuestFormPayload> = async (payload: GuestFormPayload) => {
     try {
       payload.willJoin = (String(payload.willJoin) === "willJoin");
+      payload.description = "Chưa có thông tin";
       await doCreateInvitation(payload);
       message.success('Gửi thông tin thành công!')
     } catch (error) {
@@ -57,38 +58,38 @@ export default function GuestSection() {
         </div>
         <div className={styles.formItem}>
           <label className={styles.bold}>
-            Mối quan hệ của bạn?
+            Bạn là khách mời của?
           </label>
           <div className={styles.choice}>
             <input {...register("relationship", {required: "Bạn vui lòng cho biết thông tin mối quan hệ!"})}
                    type={'radio'} radioGroup={'relationship'} value={"brideGuests"} id={"brideGuests"}/>
             <label htmlFor={"brideGuests"}>
-              Khách mời cô dâu
+              Cô dâu
             </label>
           </div>
           <div className={styles.choice}>
             <input {...register("relationship")} type={'radio'} radioGroup={'relationship'} value={"groomGuests"}
                    id={"groomGuests"}/>
             <label htmlFor={"groomGuests"}>
-              Khách mời chú rể
+              Chú rể
             </label>
           </div>
           <div className={styles['text-error']}>
             {errors?.relationship && errors?.relationship.message}
           </div>
         </div>
-        <div className={styles.formItem}>
-          <label className={styles.bold}>
-            Mô tả về mối quan hệ của bạn?
-          </label>
-          <textarea {...register("description", {required: "Vui lòng mô tả qua về mối quan hệ của bạn!"})}
-                    className={styles.text} style={{
-            fontFamily: alegreyaFont.style.fontFamily
-          }} placeholder={'Mối quan hệ...'}/>
-          <div className={styles['text-error']}>
-            {errors?.description && errors?.description.message}
-          </div>
-        </div>
+        {/*<div className={styles.formItem}>*/}
+        {/*  <label className={styles.bold}>*/}
+        {/*    Mô tả về mối quan hệ của bạn?*/}
+        {/*  </label>*/}
+        {/*  <textarea {...register("description", {required: "Vui lòng mô tả qua về mối quan hệ của bạn!"})}*/}
+        {/*            className={styles.text} style={{*/}
+        {/*    fontFamily: alegreyaFont.style.fontFamily*/}
+        {/*  }} placeholder={'Mối quan hệ...'}/>*/}
+        {/*  <div className={styles['text-error']}>*/}
+        {/*    {errors?.description && errors?.description.message}*/}
+        {/*  </div>*/}
+        {/*</div>*/}
         <div className={styles.formItem}>
           <label className={styles.bold}>
             Bạn có thể tham dự chứ?
