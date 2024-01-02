@@ -62,7 +62,7 @@ export default function MusicPlayer() {
       }}
     />
     <div className={styles.track}>
-      TẶNG NHAU - Pink Frog
+      Tặng nhau - Pink Frog x Flower
       <div className={styles.mobileTimer}>
         {!audioRef.current?.currentTime ? '--:--' : formatMusicTime(currentTime!)}
         {' / '}
