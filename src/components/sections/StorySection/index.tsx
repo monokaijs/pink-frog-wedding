@@ -13,7 +13,7 @@ export default function StorySection() {
   }}>
     <div className={styles.content}>
       <div className={styles.title}>
-        Timeline chương trình
+        Lịch trình Hôn lễ
         <img src={Leaf01.src} className={styles.leaf}/>
       </div>
       <VerticalTimeline
