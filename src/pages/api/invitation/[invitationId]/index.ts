@@ -8,6 +8,8 @@ export const updateInvitationSchema = z.object({
   guestName: z.string().optional(),
   relationship: relationshipSchema.optional(),
   description: z.string().optional(),
+  willJoin: z.boolean().optional(),
+  participants: z.string().optional()
 })
 
 
@@ -24,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
 
       const response = await invitationService.update({
-        code: req.query?.code,
+        _id: req.query?.invitationId,
       }, req.body, {
         new: true
       })
@@ -43,8 +45,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
   } else if (req.method === "GET") {
     try {
-      const response = await invitationService.getByCode({
-        code: req.query?.code,
+      const response = await invitationService.getByFilter({
+        _id: req.query?.invitationId,
       })
 
       return res.status(200).json({
@@ -62,7 +64,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   } else if (req.method === "DELETE") {
     try {
       const response = await invitationService.remove({
-        code: req.query?.code,
+        _id: req.query?.invitationId,
       });
       return res.status(200).json({
         success: true,
