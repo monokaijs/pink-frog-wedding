@@ -49,22 +49,47 @@ export default function MainSection() {
         Tr<span className={TanPearlFont.className}>ầ</span>n M<span className={TanPearlFont.className}>ỹ</span> Hoa
       </div>
     </div>
-    <div className={styles.shortStory} style={{fontFamily: alegreyaFont.style.fontFamily}}>
-      Một câu chuyện được viết lên bằng âm nhạc, tình yêu và tuổi trẻ. Viết vài câu vào dây dài dài sao cho nó dài được
-      khoảng 2 dòng là vừa đẹp...
+    {/*<div className={styles.shortStory} style={{fontFamily: alegreyaFont.style.fontFamily}}>*/}
+    {/*  Một câu chuyện được viết lên bằng âm nhạc, tình yêu và tuổi trẻ. Viết vài câu vào dây dài dài sao cho nó dài được*/}
+    {/*  khoảng 2 dòng là vừa đẹp...*/}
+    {/*</div>*/}
+
+    <div style={{zIndex: 99999}} className={'flex justify-between'}>
+      <div className={'flex-grow-1'}>
+        <h2 style={{
+          fontFamily: alegreyaFont.style.fontFamily
+        }}>Nhà trai:</h2>
+        <h3 style={{
+          fontFamily: alegreyaFont.style.fontFamily,
+          fontWeight: 500
+        }}>Ông: Vũ Thành Giang</h3>
+        <h3 style={{
+          fontFamily: alegreyaFont.style.fontFamily,
+          fontWeight: 500
+        }}>Bà: Phạm Thị Mộng Điệp</h3>
+      </div>
+      <div className={'flex-grow-1'}>
+        <h2 style={{
+          fontFamily: alegreyaFont.style.fontFamily,
+        }}>Nhà gái:</h2>
+        <h3 style={{
+          fontFamily: alegreyaFont.style.fontFamily,
+          fontWeight: 500
+        }}>Bà: Dương Thị Thúy Hòa</h3>
+      </div>
     </div>
 
-    <div className={styles.cta}>
-      <a className={styles.button} style={{
-        fontFamily: alegreyaFont.style.fontFamily
-      }}>
-        <span className={styles.text}>
-          Lịch trình
-        </span>
-        <span className={styles.date}>
-          Jan 4th, 2024
-        </span>
-      </a>
-    </div>
+    {/*<div className={styles.cta}>*/}
+    {/*  <a className={styles.button} style={{*/}
+    {/*    fontFamily: alegreyaFont.style.fontFamily*/}
+    {/*  }}>*/}
+    {/*    <span className={styles.text}>*/}
+    {/*      Lịch trình*/}
+    {/*    </span>*/}
+    {/*    <span className={styles.date}>*/}
+    {/*      Jan 4th, 2024*/}
+    {/*    </span>*/}
+    {/*  </a>*/}
+    {/*</div>*/}
   </div>
 }

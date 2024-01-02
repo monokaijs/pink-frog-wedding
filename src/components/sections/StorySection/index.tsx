@@ -25,41 +25,54 @@ export default function StorySection() {
         <VerticalTimelineElement
           position={'right'}
           className="vertical-timeline-element--work"
-          date="Thứ 2, ngày nào đó, năm 2022"
+          date="17h00, ngày 16 tháng 01 năm 2024"
           iconStyle={{backgroundColor: '#362222', color: 'white'}}
           icon={<FontAwesomeIcon icon={faHeart}/>}
         >
-          <h3 className="vertical-timeline-element-title">Lần Đầu Gặp Gỡ</h3>
-          <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
-          <p>
-            Viết gì đó sến sẩm
-          </p>
+          <h3 className="vertical-timeline-element-title">Đón khách & chụp ảnh</h3>
+          {/*<h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>*/}
+          {/*<p>*/}
+          {/*  Viết gì đó sến sẩm*/}
+          {/*</p>*/}
         </VerticalTimelineElement>
         <VerticalTimelineElement
           position={'right'}
           className="vertical-timeline-element--work"
-          date="Thứ 2, ngày nào đó, năm 2022"
+          date="18h00, ngày 16 tháng 01 năm 2024"
           iconStyle={{backgroundColor: '#362222', color: 'white'}}
           icon={<FontAwesomeIcon icon={faHeart}/>}
         >
-          <h3 className="vertical-timeline-element-title">Lần Đầu Gặp Gỡ</h3>
-          <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
-          <p>
-            Viết gì đó sến sẩm
-          </p>
+          <h3 className="vertical-timeline-element-title">Làm lễ và khai tiệc</h3>
+          {/*<h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>*/}
+          {/*<p>*/}
+          {/*  Viết gì đó sến sẩm*/}
+          {/*</p>*/}
         </VerticalTimelineElement>
         <VerticalTimelineElement
           position={'right'}
           className="vertical-timeline-element--work"
-          date="Thứ 2, ngày nào đó, năm 2022"
+          date="19h00, ngày 16 tháng 01 năm 2024"
           iconStyle={{backgroundColor: '#362222', color: 'white'}}
           icon={<FontAwesomeIcon icon={faHeart}/>}
         >
-          <h3 className="vertical-timeline-element-title">Lần Đầu Gặp Gỡ</h3>
-          <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
-          <p>
-            Viết gì đó sến sẩm
-          </p>
+          <h3 className="vertical-timeline-element-title">Giao lưu và chia sẻ</h3>
+          {/*<h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>*/}
+          {/*<p>*/}
+          {/*  Viết gì đó sến sẩm*/}
+          {/*</p>*/}
+        </VerticalTimelineElement>
+        <VerticalTimelineElement
+          position={'right'}
+          className="vertical-timeline-element--work"
+          date="20h00, ngày 16 tháng 01 năm 2024"
+          iconStyle={{backgroundColor: '#362222', color: 'white'}}
+          icon={<FontAwesomeIcon icon={faHeart}/>}
+        >
+          <h3 className="vertical-timeline-element-title">Kết thúc chương trình</h3>
+          {/*<h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>*/}
+          {/*<p>*/}
+          {/*  Viết gì đó sến sẩm*/}
+          {/*</p>*/}
         </VerticalTimelineElement>
       </VerticalTimeline>
     </div>
