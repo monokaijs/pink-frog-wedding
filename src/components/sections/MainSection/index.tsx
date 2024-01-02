@@ -54,7 +54,7 @@ export default function MainSection() {
     {/*  khoảng 2 dòng là vừa đẹp...*/}
     {/*</div>*/}
 
-    <div style={{zIndex: 99999}} className={'flex justify-between'}>
+    <div style={{zIndex: 99999}} className={styles.families}>
       <div className={'flex-grow-1'}>
         <h2 style={{
           fontFamily: alegreyaFont.style.fontFamily
@@ -72,7 +72,7 @@ export default function MainSection() {
         <h2 style={{
           fontFamily: alegreyaFont.style.fontFamily,
         }}>Nhà gái:</h2>
-        <h3 className={'opa-0'}>Opacity-0</h3>
+        <h3 className={`desktop opa-0`}>Opacity-0</h3>
         <h3 style={{
           fontFamily: alegreyaFont.style.fontFamily,
           fontWeight: 500
