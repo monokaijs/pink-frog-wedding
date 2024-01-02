@@ -13,11 +13,8 @@ export default function StorySection() {
   }}>
     <div className={styles.content}>
       <div className={styles.title}>
-        Câu Chuyện Lộc & Hoa
+        Timeline chương trình
         <img src={Leaf01.src} className={styles.leaf}/>
-      </div>
-      <div className={styles.opening}>
-        Đôi lời mở bài cho một cuộc tình dài...
       </div>
       <VerticalTimeline
         layout={'1-column-left'}
