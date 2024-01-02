@@ -3,7 +3,6 @@ import localFont from 'next/font/local';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHeart} from "@fortawesome/free-solid-svg-icons";
 import {Alegreya} from "next/font/google";
-import LeafOrnament from "@app/assets/figures/leaf-ornament.png";
 import Leaves from "@app/components/sections/MainSection/Leaves";
 import MainFigure from "@app/assets/figures/wedding-main-01.png";
 import {InvitationDto} from "@app/types/invitation.type";
@@ -17,12 +16,7 @@ const TanMonCheriFont = localFont({
 
 const alegreyaFont = Alegreya({subsets: ['latin']});
 
-interface MainSectionProps {
-  invitation: InvitationDto | null
-}
-
-export default function MainSection(props: MainSectionProps) {
-  const {invitation} = props;
+export default function MainSection() {
   return <div className={styles.mainSection}>
     <Leaves/>
     <div
@@ -38,7 +32,7 @@ export default function MainSection(props: MainSectionProps) {
         Trân trọng kính mời
       </div>
       <div className={styles.guest}>
-        {invitation?.guestName || "Một Thằng Em Bất Kỳ"}
+        {"Một Thằng Em Bất Kỳ"}
       </div>
     </div>
     <div className={styles.title} style={{fontFamily: alegreyaFont.style.fontFamily}}>

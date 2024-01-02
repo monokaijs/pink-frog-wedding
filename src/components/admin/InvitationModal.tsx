@@ -1,7 +1,6 @@
 import {InvitationDto, Relationship} from "@app/types/invitation.type";
 import {Form, Input, message, Modal, Select} from "antd";
 import {apiService} from "@app/services/api.service";
-import {makeId} from "@app/utils";
 import useRequest, {Status} from "@app/hooks/useRequest";
 import {Dispatch, SetStateAction, useEffect} from "react";
 
@@ -20,18 +19,15 @@ export const InvitationModal = (props: InvitationModalProps) => {
   const [{status: createStatus}, doCreateInvitation] = useRequest(apiService.createInvitation);
   const [{status: updateStatus}, doUpdateInvitation] = useRequest(apiService.updateInvitation);
 
-  console.log({invitation})
   const handleSubmitForm = async (payload: Partial<InvitationDto>) => {
     try {
-      const code = makeId(3);
-      if (invitation?.code) {
-        await doUpdateInvitation(invitation?.code, payload);
+      if (invitation?._id) {
+        await doUpdateInvitation(invitation?._id, payload);
         onLoad();
         message.success('Cập nhật lời mời thành công!')
       } else {
         const response = await doCreateInvitation({
           ...payload,
-          code
         });
         onLoad();
         setInvitation(response?.data);
@@ -46,15 +42,14 @@ export const InvitationModal = (props: InvitationModalProps) => {
   }
 
   useEffect(() => {
-    console.log("a", !invitation?.code, invitation?.code)
-    if (!invitation?.code) {
+    if (!invitation?._id) {
       setInvitation(null);
       form.resetFields();
       form.setFieldValue("relationship", Relationship.BRIDE_GUESTS);
     } else {
       form.setFieldsValue(invitation);
     }
-  }, [invitation?.code]);
+  }, [invitation?._id]);
 
   return <div>
     <Modal

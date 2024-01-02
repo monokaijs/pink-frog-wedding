@@ -76,15 +76,6 @@ export default function AdminPage() {
       render: (_, records) => {
         return <Dropdown menu={{ items: [
             {
-              label: 'Xem thông tin',
-              key: 'view',
-              icon: <FontAwesomeIcon icon={faEye} />,
-              onClick: () => {
-                setInvitation(records);
-                setIsOpenResultModal(true);
-              }
-            },
-            {
               label: 'Cập nhật',
               key: 'update',
               icon: <FontAwesomeIcon icon={faPenToSquare} />,
@@ -110,11 +101,11 @@ export default function AdminPage() {
 
                   onOk: async () => {
                     try {
-                      await doRemoveInvitation(records?.code);
+                      await doRemoveInvitation(records?._id);
                       handleLoadInvitations();
                       message.success('Xóa thư mời thành công!');
                     } catch (error) {
-                      message.success('Xóa thư mời thất bại!');
+                      message.error('Xóa thư mời thất bại!');
                     }
                   }
                 });
@@ -153,17 +144,11 @@ export default function AdminPage() {
           Manage invitations with specific information...
         </Typography.Paragraph>
       </div>
-      <Button type={'primary'} icon={<FontAwesomeIcon icon={faPlus}/>} onClick={() => {
-        setInvitation(null);
-        setIsOpenInvitationModal(true);
-      }}>
-        Create
-      </Button>
     </div>
     <Table pagination={{pageSize: 8}} dataSource={invitations} columns={columns}/>
     <InvitationModal setIsOpenResultModal={setIsOpenResultModal} setInvitation={setInvitation} invitation={invitation} onCancel={handleCancelInvitationModal} isOpen={isOpenInvitationModal}
                      onLoad={handleLoadInvitations}/>
-    <ResultModal isOpen={isOpenResultModal} onCancel={handleCancelResultModal} invitation={invitation}/>
+    {/*<ResultModal isOpen={isOpenResultModal} onCancel={handleCancelResultModal} invitation={invitation}/>*/}
   </AdminLayout>
 }
 

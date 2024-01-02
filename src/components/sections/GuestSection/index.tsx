@@ -1,20 +1,36 @@
 import styles from "./GuestSection.module.scss";
 import {Alegreya} from "next/font/google";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {InvitationDto, Relationship} from "@app/types/invitation.type";
 import {message} from "antd";
+import {SubmitHandler, useForm} from "react-hook-form";
 import useRequest from "@app/hooks/useRequest";
 import {apiService} from "@app/services/api.service";
 
-interface MainSectionProps {
-  invitation: InvitationDto | null
+
+
+interface GuestFormPayload {
+  willJoin: boolean,
+  participants: string,
+  guestName: string,
+  relationship: Relationship,
+  description: string,
 }
 
 const alegreyaFont = Alegreya({subsets: ['latin']});
-export default function GuestSection(props: MainSectionProps) {
-  const {invitation} = props;
-  const [willJoin, setWillJoin] = useState(true);
-  const [participants, setParticipants] = useState("1");
+export default function GuestSection() {
+  const {register, handleSubmit, watch, formState: {errors, isSubmitting}} = useForm<GuestFormPayload>();
+  const [, doCreateInvitation] = useRequest(apiService.createInvitation);
+
+  const onSubmitForm: SubmitHandler<GuestFormPayload> = async (payload: GuestFormPayload) => {
+    try {
+      payload.willJoin = (String(payload.willJoin) === "willJoin");
+      await doCreateInvitation(payload);
+      message.success('Gửi thông tin thành công!')
+    } catch (error) {
+      message.error('Có lỗi xảy ra khi gửi thông tin!')
+    }
+  }
 
   return <div className={styles.guestSection} style={{
     fontFamily: alegreyaFont.style.fontFamily
@@ -27,39 +43,83 @@ export default function GuestSection(props: MainSectionProps) {
         Bạn vui lòng điền giúp chúng mình những thông tin dưới đây nhé! Những thông tin này sẽ giúp chúng mình có thể
         đón tiếp bạn tốt hơn cũng như liên lạc với bạn khi cần thiết. Cảm ơn bạn rất nhiều!
       </div>
-      <form onSubmit={async (event: any) => {
-        try {
-          event.preventDefault();
-          await apiService.updateInvitation(invitation?.code || "", {
-            willJoin,
-            participants
-          })
-          message.success('Lưu thông tin thành công!')
-        } catch (error) {
-          message.error('Có lỗi xảy ra khi lưu thông tin!')
-        }
-      }
-      } className={styles.form}>
+      <form onSubmit={handleSubmit(onSubmitForm)} className={styles.form}>
         <div className={styles.formItem}>
-          <label htmlFor={'willJoin'}>
-            Bạn có thể tham dự chứ?
+          <label className={styles.bold}>
+            Tên của bạn là?
           </label>
-          <div className={styles.choice} onClick={() => setWillJoin(true)}>
-            <input type={'radio'} radioGroup={'willJoin'} name={'willJoin'} checked={willJoin}/> Có tham dự
-          </div>
-          <div className={styles.choice} onClick={() => setWillJoin(false)}>
-            <input type={'radio'} radioGroup={'willJoin'} name={'willJoin'} checked={!willJoin}/> Không tham dự
+          <input {...register("guestName", {required: "Bạn vui lòng điền tên!"})} className={styles.text} style={{
+            fontFamily: alegreyaFont.style.fontFamily
+          }} placeholder={'Nguyễn Văn A'}/>
+          <div className={styles['text-error']}>
+            {errors?.guestName && errors?.guestName.message}
           </div>
         </div>
         <div className={styles.formItem}>
-          <label htmlFor={'participants'}>
+          <label className={styles.bold}>
+            Mối quan hệ của bạn?
+          </label>
+          <div className={styles.choice}>
+            <input {...register("relationship", {required: "Bạn vui lòng cho biết thông tin mối quan hệ!"})}
+                   type={'radio'} radioGroup={'relationship'} value={"brideGuests"} id={"brideGuests"}/>
+            <label htmlFor={"brideGuests"}>
+              Khách mời cô dâu
+            </label>
+          </div>
+          <div className={styles.choice}>
+            <input {...register("relationship")} type={'radio'} radioGroup={'relationship'} value={"groomGuests"}
+                   id={"groomGuests"}/>
+            <label htmlFor={"groomGuests"}>
+              Khách mời chú rể
+            </label>
+          </div>
+          <div className={styles['text-error']}>
+            {errors?.relationship && errors?.relationship.message}
+          </div>
+        </div>
+        <div className={styles.formItem}>
+          <label className={styles.bold}>
+            Mô tả về mối quan hệ của bạn?
+          </label>
+          <textarea {...register("description", {required: "Vui lòng mô tả qua về mối quan hệ của bạn!"})}
+                    className={styles.text} style={{
+            fontFamily: alegreyaFont.style.fontFamily
+          }} placeholder={'Mối quan hệ...'}/>
+          <div className={styles['text-error']}>
+            {errors?.description && errors?.description.message}
+          </div>
+        </div>
+        <div className={styles.formItem}>
+          <label className={styles.bold}>
+            Bạn có thể tham dự chứ?
+          </label>
+          <div className={styles.choice}>
+            <input {...register("willJoin", {required: "Vui lòng cho biết quyết định tham dự của bạn!"})} type={'radio'}
+                   radioGroup={'willJoin'} value={"willJoin"} id={"willJoin"}/>
+            <label htmlFor={"willJoin"}>
+              Có
+              tham dự
+            </label>
+          </div>
+          <div className={styles.choice}>
+            <input {...register("willJoin")} type={'radio'} radioGroup={'willJoin'} value={"willNotJoin"}
+                   id={"willNotJoin"}/>
+            <label htmlFor={"willNotJoin"}>
+              Không
+              tham dự
+            </label>
+          </div>
+          <div className={styles['text-error']}>
+            {errors?.willJoin && errors?.willJoin.message}
+          </div>
+        </div>
+        <div className={styles.formItem}>
+          <label className={styles.bold} htmlFor={'participants'}>
             Số người tham dự
           </label>
-          <select name={'participants'} style={{
+          <select style={{
             fontFamily: alegreyaFont.style.fontFamily
-          }} disabled={!willJoin} value={participants} onChange={(event) => {
-            setParticipants(event.target.value)
-          }}>
+          }} disabled={String(watch("willJoin")) === "willNotJoin"} {...register("participants")}>
             <option value={"1"}>1 người</option>
             <option value={"2"}>2 người</option>
             <option value={"3"}>3 người</option>
@@ -69,10 +129,12 @@ export default function GuestSection(props: MainSectionProps) {
           </select>
         </div>
         <div className={styles.formItem}>
-          <button style={{
-            fontFamily: alegreyaFont.style.fontFamily
-          }}
-                  type={'submit'}
+          <button
+            disabled={isSubmitting}
+            style={{
+              fontFamily: alegreyaFont.style.fontFamily
+            }}
+            type={'submit'}
           >
             Lưu thông tin
           </button>

@@ -7,10 +7,6 @@ export type InvitationModel = Model<InvitationDto>;
 export type InvitationDoc = Document<InvitationDto>;
 
 const schema = new mongoose.Schema<InvitationDto, InvitationModel>({
-  code: {
-    type: String,
-    unique: true
-  },
   guestName: {
     type: String,
   },
