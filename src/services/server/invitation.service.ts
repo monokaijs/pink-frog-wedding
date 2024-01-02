@@ -21,7 +21,7 @@ class InvitationService {
     return document;
   }
 
-  async getByCode(
+  async getByFilter(
     filter: FilterQuery<InvitationDto>,
     options?: QueryOptions
   ): Promise<UnpackedIntersection<HydratedDocument<InvitationDto>, {}> | null> {

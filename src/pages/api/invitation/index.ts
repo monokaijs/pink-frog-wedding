@@ -7,10 +7,11 @@ import {Relationship} from "@app/types/invitation.type";
 export const relationshipSchema = z.nativeEnum(Relationship)
 
 export const createInvitationSchema = z.object({
-  code: z.string(),
   guestName: z.string(),
   relationship: relationshipSchema,
   description: z.string(),
+  willJoin: z.boolean(),
+  participants: z.string()
 })
 
 
@@ -43,7 +44,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
   } else if (req.method === "GET") {
     try {
-      const response = await invitationService.getAll({});
+      const response = await invitationService.getAll({}, {sort: {_id: -1}});
       return res.status(200).json({
         success: true,
         message: 'Get invitations successfully!',

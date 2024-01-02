@@ -25,7 +25,12 @@
       justify-content: center;
       margin-bottom: 1em;
 
-      label {
+      .text-error {
+        font-size: 18px;
+        color: #dc0404;
+      }
+
+      label.bold {
         font-weight: 600;
       }
 

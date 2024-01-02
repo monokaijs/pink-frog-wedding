@@ -15,16 +15,6 @@ import {InvitationDto} from "@app/types/invitation.type";
 
 export default function Home() {
   const {query} = useRouter();
-  const [invitation, setInvitation] = useState<InvitationDto | null>(null);
-  console.log({code: query?.code})
-
-  useEffect(() => {
-    if(query?.code){
-      apiService.getInvitationByCode(query?.code as string).then((response) => {
-        setInvitation(response?.data)
-      })
-    }
-  }, [query?.code]);
 
   return (
     <div style={{

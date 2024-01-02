@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@react-google-maps/api": "^2.19.2",
@@ -23,6 +24,7 @@
     "react": "^18",
     "react-countdown": "^2.3.5",
     "react-dom": "^18",
+    "react-hook-form": "^7.49.2",
     "react-leaflet": "^4.2.1",
     "react-vertical-timeline-component": "^3.6.0",
     "sass": "^1.69.5",

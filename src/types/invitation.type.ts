@@ -5,7 +5,6 @@ export enum Relationship {
 
 export interface InvitationDto {
   _id?: string;
-  code: string;
   guestName: string;
   relationship: Relationship;
   description: string;
