@@ -12,6 +12,13 @@ html, body, #__next {
     }
 }
 
+@media screen and (max-width: 540px) {
+    .desktop {
+        display: none;
+    }
+}
+
 .opa-0 {
     opacity: 0;
 }
+
