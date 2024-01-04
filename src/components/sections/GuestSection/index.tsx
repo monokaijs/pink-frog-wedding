@@ -24,8 +24,14 @@ export default function GuestSection() {
 
   const onSubmitForm: SubmitHandler<GuestFormPayload> = async (payload: GuestFormPayload) => {
     try {
-      payload.willJoin = (String(payload.willJoin) === "willJoin");
+      const willJoin = (String(payload.willJoin) === "willJoin")
+      payload.willJoin = willJoin;
       payload.description = "Chưa có thông tin";
+
+      if(!willJoin) {
+        payload.participants = "0";
+      }
+
       await doCreateInvitation(payload);
       message.success('Gửi thông tin thành công!')
     } catch (error) {

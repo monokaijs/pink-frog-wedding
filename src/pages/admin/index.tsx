@@ -28,19 +28,6 @@ export default function AdminPage() {
       key: 'guestName'
     },
     {
-      title: 'Description',
-      dataIndex: 'description',
-      key: 'description',
-      render: (description) => {
-        return <Typography.Paragraph className={'mb-0'} ellipsis={{
-          rows: 2,
-          expandable: true,
-        }}>{
-          description
-        }</Typography.Paragraph>
-      }
-    },
-    {
       title: 'Relationship',
       dataIndex: 'relationship',
       key: 'relationship',
