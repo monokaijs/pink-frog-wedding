@@ -32,7 +32,7 @@ export default function MainSection() {
         Trân trọng kính mời
       </div>
       <div className={styles.guest}>
-        {"Một Thằng Em Bất Kỳ"}
+        {"Quý Khách"}
       </div>
     </div>
     <div className={styles.title} style={{fontFamily: alegreyaFont.style.fontFamily}}>
