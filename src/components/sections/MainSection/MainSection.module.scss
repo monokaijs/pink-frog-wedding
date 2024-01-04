@@ -95,6 +95,11 @@
     }
   }
 
+  .families {
+    display: flex;
+    justify-content: space-between;
+  }
+
 }
 
 .leaf04 {
@@ -183,8 +188,13 @@
 
 @media screen and (max-width: 540px) {
   .mainSection {
+    text-align: center;
     .names {
       font-size: 2.4em;
+    }
+    .families {
+      display: flex;
+      flex-direction: column;
     }
   }
 }
