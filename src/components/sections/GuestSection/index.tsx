@@ -63,14 +63,14 @@ export default function GuestSection() {
             <input {...register("relationship", {required: "Bạn vui lòng cho biết thông tin mối quan hệ!"})}
                    type={'radio'} radioGroup={'relationship'} value={"brideGuests"} id={"brideGuests"}/>
             <label htmlFor={"brideGuests"}>
-              Cô dâu
+              Nhà gái
             </label>
           </div>
           <div className={styles.choice}>
             <input {...register("relationship")} type={'radio'} radioGroup={'relationship'} value={"groomGuests"}
                    id={"groomGuests"}/>
             <label htmlFor={"groomGuests"}>
-              Chú rể
+              Nhà trai
             </label>
           </div>
           <div className={styles['text-error']}>
