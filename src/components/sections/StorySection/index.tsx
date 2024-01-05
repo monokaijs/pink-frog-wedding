@@ -22,7 +22,7 @@ export default function StorySection() {
         <VerticalTimelineElement
           position={'right'}
           className="vertical-timeline-element--work"
-          date="17h00, ngày 16 tháng 01 năm 2024"
+          date="17h30, ngày 16 tháng 01 năm 2024"
           iconStyle={{backgroundColor: '#362222', color: 'white'}}
           icon={<FontAwesomeIcon icon={faHeart}/>}
         >
