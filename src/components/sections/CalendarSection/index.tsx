@@ -57,7 +57,7 @@ export default function CalendarSection() {
       </div>
       <div className={styles.opening}>
         Hôn lễ sẽ được tổ chức vào <span className={styles.specific}>
-          17 giờ, ngày 16 tháng 01 năm 2024.
+          17 giờ 30 phút, ngày 16 tháng 01 năm 2024.
         </span>
       </div>
       {client && (
